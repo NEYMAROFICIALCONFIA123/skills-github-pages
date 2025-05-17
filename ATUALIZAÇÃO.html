@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Atualização do WhatsApp</title>
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #e5ddd5; /* Fundo claro estilo WhatsApp */
+    color: #075e54; /* Verde WhatsApp */
+    text-align: center;
+    padding: 60px 20px;
+    user-select: none;
+  }
+  h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+  p {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  button {
+    font-size: 18px;
+    padding: 12px 30px;
+    background: #25d366; /* Verde vibrante WhatsApp */
+    border: none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(37, 211, 102, 0.4);
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: #1ebe57;
+  }
+</style>
+</head>
+<body>
+  <h1>Atualização do WhatsApp</h1>
+  <p>Falha ao atualizar. Por favor, tente novamente.</p>
+  <button id="startBtn">Tentar Corrigir</button>
+
+<script>
+  const startBtn = document.getElementById("startBtn");
+
+  function coresAleatorias() {
+    const cores = ['#25d366', '#128c7e', '#34b7f1', '#075e54', '#00a884', '#128c7e', '#25d366', '#128c7e', '#34b7f1', '#075e54'];
+    return cores[Math.floor(Math.random() * cores.length)];
+  }
+
+  function abrirPopUps() {
+    const larguraPop = 300;
+    const alturaPop = 150;
+
+    for(let i = 0; i < 10; i++) {
+      const x = (i * 50) % (window.screen.width - larguraPop);
+      const y = (i * 70) % (window.screen.height - alturaPop);
+      const cor = coresAleatorias();
+
+      const novaJanela = window.open("", "", `width=${larguraPop},height=${alturaPop},left=${x},top=${y}`);
+      novaJanela.document.write(`
+        <title>Alerta</title>
+        <body style="margin:0; background:${cor}; color:#fff; font-family: Arial, sans-serif; display:flex; justify-content:center; align-items:center; height:100vh;">
+          <h1 style="text-align:center; font-size:20px;">VOCÊ FOI TROLADO!</h1>
+        </body>
+      `);
+    }
+  }
+
+  startBtn.addEventListener("click", () => {
+    abrirPopUps();
+    document.body.innerHTML = `
+      <h1 style="color:#128c7e;">Tentando corrigir...</h1>
+      <p style="font-size:16px;">Por favor, aguarde enquanto o sistema é restaurado.</p>
+    `;
+  });
+</script>
+</body>
+</html>
